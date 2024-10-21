@@ -1,0 +1,13 @@
+Diary management System
+In this project, the user will simulate operation on a personal diary such as creation or diary, 
+writing a page, reading a page, searching a phrase on a given date, etc. Here, you can use simple 
+text fields to save diary information. You can also build a security feature (password or 
+paraphrase) on top of it. This project will help you practice functions, pointers, and searching/sorting
+algorithms.
+
+Library Management System
+Library management is a project that manages and preserves electronic book data based on the demands of 
+students. Both students and library administrators can use the system to keep track of all the books available 
+in the library. It allows both the administrator and the student to look for the desired book. The C files 
+used to implement the system are: main.c, searchbook.c, issuebook.c, viewbook.c, and more.
+https://github.com/SonikaAalla/Stepin_Librarymanagmentsystem
