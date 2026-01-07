@@ -1,5 +1,5 @@
-const drag = 0.44;
-const friction = 1;
+const drag = 0.024;
+const friction = 0.01;
 
 class car {
   xDim = 20;
@@ -11,27 +11,30 @@ class car {
   direction = 0;
   acceleration = 0;
   enginePower = 5;
-  mass;
+  mass = 100;
 
   tick() {
     if (keyIsDown(RIGHT_ARROW)) {
-      this.direction--;
+      this.direction-=5;
     }
     if (keyIsDown(LEFT_ARROW)) {
-      this.direction++;
+      this.direction+=5;
     }
-    var speed = sqrt(sq(this.xVelocity) + sq(this.yVelocity));
 
-    this.acceleration =
-    this.enginePower - sq(this.speed) * drag - this.speed * friction;
+    //Force to Acceleration
+    this.acceleration = this.enginePower/this.mass;
 
-    //Final Vector
+    //Drag Force
+    this.xVelocity -= (drag+friction) * this.xVelocity*this.xVelocity;
+    this.yVelocity -= (drag+friction) * this.yVelocity*this.yVelocity;
+    
+    //Engine Force
     this.xVelocity += cos(this.direction) * this.acceleration;
     this.yVelocity += sin(this.direction) * this.acceleration;
 
     //Pos based on vector
-    //this.x += this.xVelocity;
-    //this.y += this.yVelocity;
+    this.x -= this.xVelocity;
+    this.y += this.yVelocity;
   }
 
   draw() {
