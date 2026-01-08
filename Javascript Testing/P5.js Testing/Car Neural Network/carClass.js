@@ -1,16 +1,21 @@
-const drag = 0.024;
-const friction = 0.01;
+//pop - pace of play
+//doesnt affect ratio of friction drag and engine
+//just pace of play relative to map size
+const POP = 1;
+
+const drag = 0.0024 * POP;
+const friction = 0.001 * POP;
 
 class car {
-  xDim = 20;
-  yDim = 35;
+  xDim = 15;
+  yDim = 25;
   x = 1000 / 2;
   y = 800 / 2;
   xVelocity = 0;
   yVelocity = 0;
   direction = 0;
-  acceleration = 0;
-  engineForce = 5;
+  //engineForce = 10 * POP;
+  engineForce = 0;
   mass = 100;
 
   tick() {
@@ -20,17 +25,22 @@ class car {
     if (keyIsDown(LEFT_ARROW)) {
       this.direction+=5;
     }
+    if (keyIsDown(UP_ARROW)) {
+      this.engineForce = 10 * POP;
+    } else {
+      this.engineForce = 0;
+    }
 
-    //Force to Acceleration
-    this.acceleration = this.engineForce/this.mass;
+    var engineAcceleration = this.engineForce/this.mass
 
-    //Drag Force
-    this.xVelocity -= (drag+friction) * this.xVelocity;
-    this.yVelocity -= (drag+friction) * this.yVelocity;
-    
-    //Engine Force
-    this.xVelocity += cos(this.direction) * this.acceleration;
-    this.yVelocity += sin(this.direction) * this.acceleration;
+
+    //Applies drag force
+    this.xVelocity += -this.xVelocity * (drag + friction);
+    this.yVelocity += -this.yVelocity * (drag + friction);
+
+    //Applies engine force
+    this.xVelocity += cos(this.direction) * engineAcceleration;
+    this.yVelocity += sin(this.direction) * engineAcceleration;
 
     //Pos based on vector
     this.x += this.xVelocity;
