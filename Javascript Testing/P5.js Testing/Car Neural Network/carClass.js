@@ -10,7 +10,7 @@ class car {
   yVelocity = 0;
   direction = 0;
   acceleration = 0;
-  enginePower = 5;
+  engineForce = 5;
   mass = 100;
 
   tick() {
@@ -22,19 +22,19 @@ class car {
     }
 
     //Force to Acceleration
-    this.acceleration = this.enginePower/this.mass;
+    this.acceleration = this.engineForce/this.mass;
 
     //Drag Force
-    this.xVelocity -= (drag+friction) * this.xVelocity*this.xVelocity;
-    this.yVelocity -= (drag+friction) * this.yVelocity*this.yVelocity;
+    this.xVelocity -= (drag+friction) * this.xVelocity;
+    this.yVelocity -= (drag+friction) * this.yVelocity;
     
     //Engine Force
     this.xVelocity += cos(this.direction) * this.acceleration;
     this.yVelocity += sin(this.direction) * this.acceleration;
 
     //Pos based on vector
-    this.x -= this.xVelocity;
-    this.y += this.yVelocity;
+    this.x += this.xVelocity;
+    this.y -= this.yVelocity;
   }
 
   draw() {
