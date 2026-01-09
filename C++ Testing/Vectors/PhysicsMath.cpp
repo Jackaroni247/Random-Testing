@@ -5,9 +5,10 @@ using namespace std;
 
 int main()
 {
-
-    Vector v1("Engine",2.0, 4.0);
-    Vector v2("Drag",-1.0, 5.0);
+    string v1Name = "Engine";
+    string v2Name = "Drag";
+    Vector v1(v1Name,2);
+    Vector v2(v2Name,2);
 
     v1.print();
     v2.print();
