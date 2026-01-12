@@ -1,7 +1,7 @@
 //pop - pace of play
 //doesnt affect ratio of friction drag and engine
 //just pace of play relative to map size
-const POP = 1;
+const POP = 0.5;
 
 const drag = 0.0024 * POP;
 const friction = 0.001 * POP;
@@ -9,14 +9,19 @@ const friction = 0.001 * POP;
 class car {
   xDim = 15;
   yDim = 25;
-  x = 1000 / 2;
-  y = 800 / 2;
+  x;
+  y;
   xVelocity = 0;
   yVelocity = 0;
-  direction = 0;
-  //engineForce = 10 * POP;
+  direction = 90;
   engineForce = 0;
   mass = 100;
+  dead = false;
+
+  constructor(initX, initY) {
+    this.x = initX;
+    this.y = initY;
+  }
 
   tick() {
     if (keyIsDown(RIGHT_ARROW)) {
@@ -29,6 +34,10 @@ class car {
       this.engineForce = 10 * POP;
     } else {
       this.engineForce = 0;
+    }
+
+    if(Math.sqrt((this.x - 500)*(this.x - 500)+(this.y - 400)*(this.y - 400)) > ringOUT/2 || Math.sqrt((this.x - 500)*(this.x - 500)+(this.y - 400)*(this.y - 400)) < ringIN/2) {
+      this.die();
     }
 
     var engineAcceleration = this.engineForce/this.mass
@@ -49,6 +58,8 @@ class car {
 
   draw() {
     angleMode(DEGREES);
+    strokeWeight(1);
+    fill(255);
     triangle(
       this.x +
         (this.yDim / 2) * sin(-this.direction + 90) -
@@ -92,5 +103,9 @@ class car {
         (this.yDim / 2) * cos(-this.direction + 90) +
         (this.xDim / 2) * sin(-this.direction + 90)
     );
+  }
+
+  die() {
+    this.dead = true;
   }
 }
