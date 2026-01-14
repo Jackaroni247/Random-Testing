@@ -1,14 +1,14 @@
-#include "VectorClass.h"
+//GNU nano 8.1                                       PhysicsMath.cpp                                                 
+#include "MPVectorClass.h"
 #include "MatrixClass.h"
 
 using namespace std;
 
 int main()
 {
-    string v1Name = "Engine";
-    string v2Name = "Drag";
-    Vector v1(v1Name,2);
-    Vector v2(v2Name,2);
+
+    MPVector v1("Engine", {1,2,3,4});
+    MPVector v2("Drag", {5,6,7,8});
 
     v1.print();
     v2.print();
