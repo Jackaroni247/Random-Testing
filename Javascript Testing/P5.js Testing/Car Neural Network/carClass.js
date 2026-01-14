@@ -6,7 +6,7 @@ const POP = 0.5;
 const drag = 0.0024 * POP;
 const friction = 0.001 * POP;
 
-class car {
+class Car {
   xDim = 15;
   yDim = 25;
   x;
@@ -24,17 +24,6 @@ class car {
   }
 
   tick() {
-    if (keyIsDown(RIGHT_ARROW)) {
-      this.direction-=5;
-    }
-    if (keyIsDown(LEFT_ARROW)) {
-      this.direction+=5;
-    }
-    if (keyIsDown(UP_ARROW)) {
-      this.engineForce = 10 * POP;
-    } else {
-      this.engineForce = 0;
-    }
 
     if(Math.sqrt((this.x - 500)*(this.x - 500)+(this.y - 400)*(this.y - 400)) > ringOUT/2 || Math.sqrt((this.x - 500)*(this.x - 500)+(this.y - 400)*(this.y - 400)) < ringIN/2) {
       this.die();
