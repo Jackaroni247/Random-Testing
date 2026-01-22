@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cmath>
 #include <string>
 #include "MPVectorClass.h"
@@ -39,12 +38,16 @@ public:
 };
 
 Matrix addMatrices(Matrix m1, Matrix m2) {
-
-
-        return m1;
+        if(m1.nRows!=m2.nRows || m1.nCols!=m2.nCols) {
+                cout << "Matrices are not of the same dimension" << '\n';
+                return m1;
+        }
 }
 
 Matrix subtractMatrices(Matrix m1, Matrix m2) {
-
+        if(m1.nRows!=m2.nRows || m1.nCols!=m2.nCols) {
+                cout << "Matrices are not of the same dimension" << '\n';
+                return m1;
+        }
         return m1;
 }
