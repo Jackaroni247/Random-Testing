@@ -44,13 +44,15 @@ Matrix addMatrices(Matrix m1, Matrix m2) {
 		cout << "Matrices are not of the same dimension" << '\n';
 		return m1;
 	}
-
+	vector<vector<float>> m3;
 	for(int i = 0; i < m1.nRows; i++) {
+		m3.insert(m3.end(), {});
 		for(int j = 0; j < m1.nCols; j++) {
-			
+			m3[i].insert(m3[i].end(), m1.matrix[i][j]+m2.matrix[i][j]);
                	}
         }
-	return m1;
+	Matrix M3("Sum", m3);
+	return M3;
 }
 
 Matrix subtractMatrices(Matrix m1, Matrix m2) {
@@ -58,5 +60,13 @@ Matrix subtractMatrices(Matrix m1, Matrix m2) {
                 cout << "Matrices are not of the same dimension" << '\n';
                 return m1;
         }
-	return m1;
+	vector<vector<float>> m3;
+	for(int i = 0; i < m1.nRows; i++) {
+		m3.insert(m3.end(), {});
+		for(int j = 0; j < m1.nCols; j++) {
+			m3[i].insert(m3[i].end(), m1.matrix[i][j] - m2.matrix[i][j]);
+		}
+	}
+	Matrix M3("Difference", m3);
+	return M3;
 }
