@@ -38,6 +38,7 @@ public:
 	}
 };
 
+//Segmentation fault here
 Matrix addMatrices(Matrix m1, Matrix m2) {
 	//Checks to make sure theyre the same size;
 	if(m1.nRows!=m2.nRows || m1.nCols!=m2.nCols) {
@@ -56,6 +57,7 @@ Matrix addMatrices(Matrix m1, Matrix m2) {
 }
 
 Matrix subtractMatrices(Matrix m1, Matrix m2) {
+		//Checks to make sure theyre the same size;
         if(m1.nRows!=m2.nRows || m1.nCols!=m2.nCols) {
                 cout << "Matrices are not of the same dimension" << '\n';
                 return m1;
