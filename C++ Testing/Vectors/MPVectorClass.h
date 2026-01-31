@@ -20,11 +20,11 @@ public:
     void print()
     {
 	//Reads out every part of the vector
-        cout << name << " Vector: (";
+        cout << name << " Vector: |";
         for(int i = 0; i < dimensions-1; i++) {
             cout << components[i] << ' ';
         }
-        cout << components[dimensions-1] <<")" << '\n';
+        cout << components[dimensions-1] <<"|" << '\n';
 	cout << name << ": " << dimensions << '\n';
     }
 };
