@@ -9,6 +9,7 @@ const friction = 0.001 * POP;
 class Car {
   xDim = 15;
   yDim = 25;
+  tracksList = [[20,20]];
   x;
   y;
   xVelocity = 0;
@@ -17,6 +18,7 @@ class Car {
   engineForce = 0;
   mass = 100;
   dead = false;
+  brain = new carBrain();
 
   constructor(initX, initY) {
     this.x = initX;
@@ -48,6 +50,8 @@ class Car {
   draw() {
     angleMode(DEGREES);
     strokeWeight(1);
+    fill(0);
+    rect(this.tracksList[0][0], this.tracksList[0][1], 2)
     fill(255);
     triangle(
       this.x +
@@ -96,5 +100,9 @@ class Car {
 
   die() {
     this.dead = true;
+  }
+
+  think() {
+    
   }
 }
