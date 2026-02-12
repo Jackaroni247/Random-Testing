@@ -62,6 +62,7 @@ Matrix subtractMatrices(Matrix m1, Matrix m2) {
                 cout << "Matrices are not of the same dimension" << '\n';
                 return m1;
         }
+
 	vector<vector<float>> m3(m1.nRows,vector<float>(m1.nCols));
 	for(int i = 0; i < m1.nRows; i++) {
 		for(int j = 0; j < m1.nCols; j++) {
@@ -70,4 +71,16 @@ Matrix subtractMatrices(Matrix m1, Matrix m2) {
 	}
 	Matrix M3("Difference", m3);
 	return M3;
+}
+
+Matrix multiplyMatrixes(Matrix m1, Matrix m2) {
+	//Checks to make sure theyre the same size
+	if(m1.nRows!=m2.nRows || m1.nCols!=m2.nCols) {
+		return m1;
+	}
+
+	for(int i = 0; i < m1.nRows; i++) {
+
+	}
+	return m1;
 }
