@@ -73,7 +73,7 @@ Matrix subtractMatrices(Matrix m1, Matrix m2) {
 	return M3;
 }
 
-Matrix multiplyMatrixes(Matrix m1, Matrix m2) {
+Matrix multiplyMatrices(Matrix m1, Matrix m2) {
 	//Checks to make sure theyre the same size
 	if(m1.nRows!=m2.nRows || m1.nCols!=m2.nCols) {
 		return m1;
